@@ -1,0 +1,27 @@
+version: "3.3"
+
+services:
+
+  ftp:
+    build: .
+    image: "ftp:latest"
+    hostname: ftp
+    restart: "no"
+    container_name: "ftp"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Warsaw
+    ports:
+      - "21:21"
+    volumes:
+      - "./vsftpd.conf:/etc/vsftpd.conf"
+      - "/mnt/dane:/mnt/dane"
+    networks:
+      xmsnet:
+        aliases:
+          - ftp
+networks:
+  xmsnet:
+    external:
+     name: xmsnet
