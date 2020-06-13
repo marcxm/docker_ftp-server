@@ -18,10 +18,10 @@ services:
       - "./vsftpd.conf:/etc/vsftpd.conf"
       - "/mnt/dane:/mnt/dane"
     networks:
-      xmsnet:
+      mynetwork:
         aliases:
           - ftp
 networks:
-  xmsnet:
+  mynetwork:
     external:
-     name: xmsnet
+     name: mynetwork
